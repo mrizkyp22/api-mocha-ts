@@ -18,6 +18,8 @@ Before using this tool, make sure you have the following in place:
     BASE_URL=your_base_url
     USERNAME=your_username
     PASSWORD=your_password
-4. **Running Test**: To run the automated tests, follow these steps: 
+
+## Running Test
+To run the automated tests, follow these steps: 
     ```sh
     npm run dev
