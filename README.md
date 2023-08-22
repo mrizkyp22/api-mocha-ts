@@ -12,9 +12,12 @@ Before using this tool, make sure you have the following in place:
    ```sh
    npm install
 3. **.env**: Create a .env file in the project root directory to configure global and sensitive data. For example:
-CLIENT_ID=your_client_id
-CLIENT_SECRET=your_client_secret
-BASE_URL=your_base_url
-USERNAME=your_username
-PASSWORD=your_password
-4. **Running Test**: To run the automated tests, follow these steps: ```npm run dev```
+   ```sh
+    CLIENT_ID=your_client_id
+    CLIENT_SECRET=your_client_secret
+    BASE_URL=your_base_url
+    USERNAME=your_username
+    PASSWORD=your_password
+4. **Running Test**: To run the automated tests, follow these steps: 
+    ```sh
+    npm run dev
