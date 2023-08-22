@@ -19,7 +19,7 @@ Before using this tool, make sure you have the following in place:
     USERNAME=your_username
     PASSWORD=your_password
 
-## Running Test
-To run the automated tests, follow these steps: 
+## Runner Test
+4. **Running Script**: To run the automated tests, follow these steps: 
     ```sh
     npm run dev
