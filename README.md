@@ -20,6 +20,6 @@ Before using this tool, make sure you have the following in place:
     PASSWORD=your_password
 
 ## Runner Test
-**Running Script**: To run the automated tests, follow these steps: 
+1. **Running Script**: To run the automated tests, follow these steps: 
     ```sh
-   npm run dev
+    npm run dev
