@@ -1,4 +1,4 @@
-# Automated API Testing Tool with Mocha, Chai, and TypeScript
+# Automated API Testing Tool
 
 This tool facilitates automated API testing through Mocha, Chai, and TypeScript. It helps you streamline your API testing process by automating test cases and assertions.
 
