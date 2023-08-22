@@ -1,9 +1,9 @@
 import 'mocha';
 import { expect } from 'chai';
-import { loginValid } from '../data/login.data';
+import { loginValid } from '../testcases/login.testcase';
 import { login } from '../api/login';
 import { getInformation } from '../api/getInformation';
-import { getInformationNoAuth,getInformationSuccess } from '../data/getinformation.data';
+import { getInformationNoAuth,getInformationSuccess } from '../testcases/getinformation.testcase';
 
 export function getInformationRunner() {
     describe('API Get Information Test Suite', () => {
@@ -18,7 +18,7 @@ export function getInformationRunner() {
         describe('Positive Cases', () => {
             it(getInformationSuccess.testcase, async () => {
                 const response = await getInformation(accessToken);
-                    
+
                 expect(response.data).to.have.property('code', 200);
                 expect(response.data).to.have.property('message', getInformationSuccess.message);
                 expect(response.data.data).to.have.property('message', "Klik tombol di samping untuk melihat definisi approver personal & workgroup");

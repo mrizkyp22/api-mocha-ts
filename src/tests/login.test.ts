@@ -5,8 +5,9 @@ import {
   loginInvalid,
   loginValid,
   loginInvalid3times,
-  loginEmptyField
-} from '../data/login.data';
+  loginEmptyField,
+  loginSQLInject
+} from '../testcases/login.testcase';
 
 export function loginTestRunner() {
   describe('API LOGIN Test Suite', () => {
@@ -43,6 +44,13 @@ export function loginTestRunner() {
         expect(response.data).to.have.property('code', 400);
         expect(response.data).to.have.property('message', loginEmptyField.message);
         expect(response.data.details).to.have.property('message', loginEmptyField.errorDetails);
+      });
+      it(loginSQLInject.testcase, async () => {
+        const response = await login(loginSQLInject.loginData);
+        console.log(response.config.data)
+        expect(response.data).to.have.property('code', 400);
+        expect(response.data).to.have.property('message', loginSQLInject.message);
+        expect(response.data).to.not.have.property('data');
       });
     });
   });

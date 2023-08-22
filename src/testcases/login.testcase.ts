@@ -50,5 +50,14 @@ const loginEmptyField = {
     errorDetails: "NIK/Password tidak sesuai."
 };
 
+const loginSQLInject = {
+    loginData:{
+        username: "' OR '1'='1",
+        password: "' OR '1'='1"
+    },
+    testcase: 'When user login with SQL Injection data',
+    message:  'NIK / Email / Password Salah'
+};
+
 // Export the objects
-export { loginValid, loginInvalid, loginInvalid3times, loginEmptyField };
+export { loginValid, loginInvalid, loginInvalid3times, loginEmptyField, loginSQLInject };
