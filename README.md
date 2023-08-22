@@ -19,6 +19,14 @@ Before using this tool, make sure you have the following in place:
     USERNAME=your_username
     PASSWORD=your_password
 
+## Explanation of the structure:
+
+1. `src/api`: This directory is used to configure request endpoints.
+2. `src/schema`: This directory is used to store JSON data schemas.
+3. `src/testcase`: This directory is used to create test cases.
+4. `src/test`: This directory is used to configure assertions.
+5. `src/runnerTest.ts`: This file is used to collect all test suite 
+
 ## Runner Test
 1. **Running Script**: To run the automated tests, follow these steps: 
     ```sh
