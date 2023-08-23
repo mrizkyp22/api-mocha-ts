@@ -39,5 +39,15 @@ const createTokenExtDataValid = {
     message:"Product already exist"
   };
 
+  const createTokenAddSpace = {
+    payload: {
+      product: `automationCreate-${randomString} `,
+      email: `emailQA.${randomString}@gmail.com`,
+      module: ["QA"]
+  },
+    testcase:"Verify user cant create token when field has whitespace ",
+    message:"Product already exist"
+  };
 
-  export { endpoints, createTokenExtDataValid, createTokenExtEmptyField,createTokenExtSameData };
+
+  export { endpoints, createTokenExtDataValid, createTokenExtEmptyField,createTokenExtSameData, createTokenAddSpace };

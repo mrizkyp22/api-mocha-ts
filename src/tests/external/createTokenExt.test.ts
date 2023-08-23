@@ -7,7 +7,8 @@ import {
     endpoints,
     createTokenExtDataValid, 
     createTokenExtEmptyField, 
-    createTokenExtSameData
+    createTokenExtSameData,
+    createTokenAddSpace
 } from '../../testcases/external/createTokenExt.testcase';
 
 export function createTokenExtTestRunner() {
@@ -43,6 +44,16 @@ export function createTokenExtTestRunner() {
                 const response = await createTokenExt(endpoints,accessToken, payload);
                 expect(response.data.code).to.equal(400);
                 expect(response.data.message).to.equal(createTokenExtSameData.message);
+            });
+            it(createTokenAddSpace.testcase, async () => {
+                const response = await createTokenExt(endpoints,accessToken, payload);
+                const payloadChange = response.config.data
+
+                console.log(payloadChange);
+                console.log(payloadChange.product);
+                const responses = await createTokenExt(endpoints,accessToken, payload);
+                expect(responses.data.code).to.equal(400);
+                expect(responses.data.message).to.equal(createTokenAddSpace.message);
             });
         })
     });
