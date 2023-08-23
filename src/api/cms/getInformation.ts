@@ -1,11 +1,11 @@
-// login.ts
 import axios from 'axios';
+import { endpoint } from '../../testcases/cms/getinformation.testcase';
 
 export async function getInformation(accessToken:any) {
 
   try {
     const response = await axios.get(
-      `${process.env.BASE_URL}/apm/v1/approver/information`,
+      endpoint,
       {
         headers: {
           "Authorization": `Bearer ${accessToken}`,

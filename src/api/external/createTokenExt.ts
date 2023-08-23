@@ -1,15 +1,12 @@
 // login.ts
 import axios from 'axios';
-import { generateToken } from './generateToken';
 
-export async function login(data: any) {
-  const tokenResponse = await generateToken();
-  const accessToken = tokenResponse.data.data.accessToken;
+export async function createTokenExt(endpoint:any ,accessToken: any, payload:any) {
 
   try {
     const response = await axios.post(
-      `${process.env.BASE_URL}/users-management/v3/auth/login`,
-      data,
+      endpoint,
+      payload,
       {
         headers: {
           "Authorization": `Bearer ${accessToken}`,

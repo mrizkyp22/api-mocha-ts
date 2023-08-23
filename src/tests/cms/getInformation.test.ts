@@ -1,9 +1,9 @@
 import 'mocha';
 import { expect } from 'chai';
-import { loginValid } from '../testcases/login.testcase';
-import { login } from '../api/login';
-import { getInformation } from '../api/getInformation';
-import { getInformationNoAuth,getInformationSuccess } from '../testcases/getinformation.testcase';
+import { endpoint, loginValid } from '../../testcases/cms/login.testcase';
+import { login } from '../../api/cms/login';
+import { getInformation } from '../../api/cms/getInformation';
+import { getInformationNoAuth,getInformationSuccess } from '../../testcases/cms/getinformation.testcase';
 
 export function getInformationRunner() {
     describe('API Get Information Test Suite', () => {
@@ -11,7 +11,7 @@ export function getInformationRunner() {
     
         // Run before each test case in this suite
         before(async () => {
-            const loginResponse = await login(loginValid.loginData);
+            const loginResponse = await login(endpoint,loginValid.loginData);
             accessToken = loginResponse.data.data.accessToken; // Store the access token
         });
     
