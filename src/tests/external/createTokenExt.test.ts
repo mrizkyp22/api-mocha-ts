@@ -11,7 +11,7 @@ import {
 } from '../../testcases/external/createTokenExt.testcase';
 
 export function createTokenExtTestRunner() {
-    describe('API Generate Token Before Login', () => {
+    describe('API create token for external', () => {
         let accessToken: any;
         let payload: any;
         let token: any;
@@ -44,12 +44,6 @@ export function createTokenExtTestRunner() {
                 expect(response.data.code).to.equal(400);
                 expect(response.data.message).to.equal(createTokenExtSameData.message);
             });
-                it(createTokenExtSameData.testcase, async () => {
-                const response = await createTokenExt(endpoints,accessToken, payload);
-                expect(response.data.code).to.equal(400);
-                expect(response.data.message).to.equal(createTokenExtSameData.message);
-            });
-
         })
     });
 }

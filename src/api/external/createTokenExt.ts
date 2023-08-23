@@ -1,4 +1,3 @@
-// login.ts
 import axios from 'axios';
 
 export async function createTokenExt(endpoint:any ,accessToken: any, payload:any) {

@@ -1,4 +1,3 @@
-// login.ts
 import axios from 'axios';
 import { generateToken } from './generateToken';
 

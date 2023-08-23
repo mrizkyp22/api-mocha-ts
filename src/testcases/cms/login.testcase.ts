@@ -1,3 +1,5 @@
+import {nullValues,booleanValues,HTMLValues}from '../../testcases/general.testcase';
+
 function generateRandomString(length: number): string {
     const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -52,6 +54,16 @@ const loginEmptyField = {
     errorDetails: "NIK/Password tidak sesuai."
 };
 
+const loginNULLValue = {
+    loginData: {
+        username: nullValues,
+        password: nullValues
+    },
+    testcase: 'Verify user cant login with null values',
+    message:  'Failed to validate request data',
+    errorDetails: "NIK/Password tidak sesuai."
+};
+
 const loginSQLInject = {
     loginData:{
         username: "' OR '1'='1",
@@ -61,5 +73,34 @@ const loginSQLInject = {
     message:  'NIK / Email / Password Salah'
 };
 
+const loginBooleanValues = {
+    loginData:{
+        username: booleanValues,
+        password: booleanValues
+    },
+    testcase: 'Verify user cant login with boolean values',
+    message:  'Failed to validate request data',
+    errorDetails: "NIK/Password tidak sesuai."
+};
+
+const loginHTMLValues = {
+    loginData:{
+        username: HTMLValues,
+        password: HTMLValues
+    },
+    testcase: 'Verify user cant login with HTML values',
+    message:  'NIK / Email / Password Salah'
+};
+
 // Export the objects
-export { endpoint,loginValid, loginInvalid, loginInvalid3times, loginEmptyField, loginSQLInject };
+export { 
+    endpoint,
+    loginValid, 
+    loginInvalid, 
+    loginInvalid3times, 
+    loginEmptyField, 
+    loginNULLValue,
+    loginSQLInject,
+    loginBooleanValues,
+    loginHTMLValues
+};

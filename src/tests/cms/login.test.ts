@@ -7,7 +7,10 @@ import {
   loginValid,
   loginInvalid3times,
   loginEmptyField,
-  loginSQLInject
+  loginNULLValue,
+  loginSQLInject,
+  loginBooleanValues,
+  loginHTMLValues
 } from '../../testcases/cms/login.testcase';
 
 export function loginTestRunner() {
@@ -53,6 +56,27 @@ export function loginTestRunner() {
         expect(response.data).to.have.property('message', loginSQLInject.message);
         expect(response.data).to.not.have.property('data');
       });
+
+      it(loginNULLValue.testcase, async () => {
+        const response = await login(endpoint,loginNULLValue.loginData);
+        expect(response.data).to.have.property('code', 400);
+        expect(response.data).to.have.property('message', loginNULLValue.message);
+        expect(response.data.details).to.have.property('message', loginNULLValue.errorDetails);
+      });
+
+      it(loginBooleanValues.testcase, async () => {
+        const response = await login(endpoint,loginBooleanValues.loginData);
+        expect(response.data).to.have.property('code', 400);
+        expect(response.data).to.have.property('message', loginBooleanValues.message);
+        expect(response.data.details).to.have.property('message', loginBooleanValues.errorDetails);
+      });
+
+      it(loginHTMLValues.testcase, async () => {
+        const response = await login(endpoint,loginHTMLValues.loginData);
+        expect(response.data).to.have.property('code', 400);
+        expect(response.data).to.have.property('message', loginHTMLValues.message);
+      });
+
     });
   });
 }
