@@ -14,7 +14,8 @@ function generateRandomString(length: number): string {
   
   const randomString = generateRandomString(6);
 
-const endpoint = `${process.env.BASE_URL}/users-management/v3/auth/login`
+const pathEndpoint = '/users-management/v3/auth/login'
+const endpoint = `${process.env.BASE_URL}${pathEndpoint}`
 
 const loginValid = {
     loginData : {

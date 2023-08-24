@@ -1,4 +1,5 @@
-const endpoint = process.env.BASE_URL + '/users-management/v3/auth/generatetoken'
+const pathEndpoint = '/users-management/v3/auth/generatetoken'
+const endpoint = `${process.env.BASE_URL}${pathEndpoint}`
 
 const generateTokenData = {
   payload: {
@@ -9,4 +10,4 @@ const generateTokenData = {
 
 };
 
-export { endpoint, generateTokenData };
+export { endpoint,pathEndpoint, generateTokenData };

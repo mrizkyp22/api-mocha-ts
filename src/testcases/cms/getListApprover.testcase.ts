@@ -1,4 +1,5 @@
-const endpoint =  `${process.env.BASE_URL}/apm/v1/approver`
+const pathEndpoint =  '/apm/v1/approver'
+const endpoint = `${process.env.BASE_URL}${pathEndpoint}`
 
 const queryListPageAndSize = {
     payload:{
@@ -34,6 +35,7 @@ const queryListWithSQLInject = {
 
 export {
     endpoint,
+    pathEndpoint,
     queryListPageAndSize,
     queryListWithSQLInject,
     getListApproverWithoutAuth
