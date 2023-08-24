@@ -12,7 +12,8 @@ function generateRandomString(length: number): string {
   
   const randomString = generateRandomString(4);
 
-const endpoints = `${process.env.BASE_URL}/apm/v1/token`
+const pathEndpoint = '/apm/v1/token'
+const endpoints = `${process.env.BASE_URL}${pathEndpoint}`
 
 const createTokenExtDataValid = {
     payload: {
@@ -50,4 +51,4 @@ const createTokenExtDataValid = {
   };
 
 
-  export { endpoints, createTokenExtDataValid, createTokenExtEmptyField,createTokenExtSameData, createTokenAddSpace };
+  export { endpoints, pathEndpoint,createTokenExtDataValid, createTokenExtEmptyField,createTokenExtSameData, createTokenAddSpace };

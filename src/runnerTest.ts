@@ -9,7 +9,7 @@ async function runAllTests() {
   loginTestRunner();
   getInformationRunner();
   // getListApproverRunner();
-  // createTokenExtTestRunner();
+  createTokenExtTestRunner();
 }
 
 // Call the function to run all tests
