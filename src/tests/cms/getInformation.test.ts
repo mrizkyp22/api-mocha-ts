@@ -3,10 +3,10 @@ import { expect } from 'chai';
 import { endpoint, loginValid } from '../../testcases/cms/login.testcase';
 import { login } from '../../api/cms/login';
 import { getInformation } from '../../api/cms/getInformation';
-import { getInformationNoAuth,getInformationSuccess } from '../../testcases/cms/getinformation.testcase';
+import { pathEndpoint,getInformationNoAuth,getInformationSuccess } from '../../testcases/cms/getinformation.testcase';
 
 export function getInformationRunner() {
-    describe('API Get Information Test Suite', () => {
+    describe(pathEndpoint, () => {
         let accessToken: any ; // Declare a variable to store the access token
     
         // Run before each test case in this suite

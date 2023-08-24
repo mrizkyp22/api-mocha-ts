@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { login } from '../../api/cms/login';
 import {
   endpoint,
+  pathEndpoint,
   loginInvalid,
   loginValid,
   loginInvalid3times,
@@ -14,69 +15,88 @@ import {
 } from '../../testcases/cms/login.testcase';
 
 export function loginTestRunner() {
-  describe('API LOGIN Test Suite', () => {
+  describe(pathEndpoint, () => {
     describe('Positive Cases', () => {
-      it(loginValid.testcase, async () => {
-        const response = await login(endpoint,loginValid.loginData);
+      context(loginValid.testcase, () => {
+        let response: any;
 
-        expect(response.data).to.have.property('code', 200);
-        expect(response.data).to.have.property('message', loginValid.message);
-        expect(response.data.data).to.have.property('accessToken').that.is.a('string');
+        before(async () => {
+          response = await login(endpoint, loginValid.loginData);
+        });
+
+        it('should return code 200', async () => {
+          expect(response.data.code).to.equal(200, 'Expected status code to be 200');
+        });
+
+        it(`should return message "${loginValid.message}"`, () => {
+          expect(response.data).to.have.property('message', loginValid.message);
+        });
+
+        it('should have field "accessToken"', async () => {
+          expect(response.data.data).to.have.property('accessToken').that.is.a('string');
+        });
       });
     });
 
     describe('Negative Cases', () => {
-      it(loginInvalid.testcase, async () => {
-        const response = await login(endpoint, loginInvalid.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginInvalid.message);
-        expect(response.data).to.not.have.property('data');
+      const negativeTestCases = [
+        loginInvalid,
+        loginEmptyField,
+        loginSQLInject,
+        loginNULLValue,
+        loginBooleanValues,
+        loginHTMLValues
+      ];
+
+      negativeTestCases.forEach(testCase => {
+        context(testCase.testcase, async () => {
+          let response: any;
+
+          before(async () => {
+            response = await login(endpoint, testCase.loginData);
+          });
+
+          it('should return code 400', async () => {
+            expect(response.data).to.have.property('code', 400);
+          });
+
+          it(`should return message "${testCase.message}"`, async () => {
+            expect(response.data).to.have.property('message', testCase.message);
+          });
+
+          if ('errorDetails' in testCase) {
+            it(`should have details.message "${testCase.errorDetails}"`, () => {
+              expect(response.data.details).to.have.property('message', testCase.errorDetails);
+            });
+          } else {
+            it('should not have data object', () => {
+              expect(response.data).to.not.have.property('data');
+            });
+          }
+        });
       });
 
-      it(loginInvalid3times.testcase, async () => {
-        let response;
-        for (let i = 0; i < 3; i++) {
-          response = await login(endpoint,loginInvalid.loginData);
-        }
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginInvalid3times.message);
-        expect(response.data.details).to.have.property('message', loginInvalid3times.errorDetails);
-      });
+      context(loginInvalid3times.testcase, async () => {
+        let response: any;
 
-      it(loginEmptyField.testcase, async () => {
-        const response = await login(endpoint,loginEmptyField.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginEmptyField.message);
-        expect(response.data.details).to.have.property('message', loginEmptyField.errorDetails);
-      });
-      
-      it(loginSQLInject.testcase, async () => {
-        const response = await login(endpoint,loginSQLInject.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginSQLInject.message);
-        expect(response.data).to.not.have.property('data');
-      });
+        before(async () => {
+          for (let i = 0; i < 3; i++) {
+            response = await login(endpoint, loginInvalid.loginData);
+          }
+        });
 
-      it(loginNULLValue.testcase, async () => {
-        const response = await login(endpoint,loginNULLValue.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginNULLValue.message);
-        expect(response.data.details).to.have.property('message', loginNULLValue.errorDetails);
-      });
+        it('should return code 400', async () => {
+          expect(response.data).to.have.property('code', 400);
+        });
 
-      it(loginBooleanValues.testcase, async () => {
-        const response = await login(endpoint,loginBooleanValues.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginBooleanValues.message);
-        expect(response.data.details).to.have.property('message', loginBooleanValues.errorDetails);
-      });
+        it(`should return message "${loginInvalid3times.message}"`, async () => {
+          expect(response.data).to.have.property('message', loginInvalid3times.message);
+        });
 
-      it(loginHTMLValues.testcase, async () => {
-        const response = await login(endpoint,loginHTMLValues.loginData);
-        expect(response.data).to.have.property('code', 400);
-        expect(response.data).to.have.property('message', loginHTMLValues.message);
+        it(`should have details.message "${loginInvalid3times.errorDetails}"`, () => {
+          expect(response.data.details).to.have.property('message', loginInvalid3times.errorDetails);
+        });
       });
-
     });
   });
 }

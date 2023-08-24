@@ -3,7 +3,7 @@ import { expect, assert } from 'chai';
 import { generateToken } from '../../api/cms/generateToken';
 import Ajv from 'ajv';
 import { generateToken_schema } from '../../schema/cms/generateToken.schema';
-import { pathEndpoint,generateTokenData } from '../../testcases/cms/generateToken.testcase';
+import { pathEndpoint, generateTokenData } from '../../testcases/cms/generateToken.testcase';
 
 export function generateTokenTestRunner() {
   describe(pathEndpoint, () => {
@@ -13,6 +13,7 @@ export function generateTokenTestRunner() {
       before(async () => {
         response = await generateToken();
       });
+
       context(generateTokenData.testcase, () => {
         it('should return code 200', async () => {
           expect(response.data.code).to.equal(200, 'Expected status code to be 200');
@@ -31,7 +32,7 @@ export function generateTokenTestRunner() {
           expect(isValid).to.be.true;
         });
       });
-    })
+    });
   });
 }
 

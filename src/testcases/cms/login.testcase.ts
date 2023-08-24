@@ -96,6 +96,7 @@ const loginHTMLValues = {
 // Export the objects
 export { 
     endpoint,
+    pathEndpoint,
     loginValid, 
     loginInvalid, 
     loginInvalid3times, 
