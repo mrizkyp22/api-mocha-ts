@@ -1,4 +1,4 @@
-const pathEndpoint = '/apm/v1/approver/information`'
+const pathEndpoint = '/apm/v1/approver/information'
 const endpoint = `${process.env.BASE_URL}${pathEndpoint}`
 
 const getInformationNoAuth = {
@@ -10,6 +10,7 @@ const getInformationNoAuth = {
 const getInformationSuccess = {
     testcase: 'Verify user can see information data',
     message:  'Success!',
+    detailData: "Klik tombol di samping untuk melihat definisi approver personal & workgroup"
 };
 
 // Export the objects

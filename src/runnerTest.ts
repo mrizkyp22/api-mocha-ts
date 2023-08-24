@@ -7,7 +7,7 @@ import { createTokenExtTestRunner } from "./tests/external/createTokenExt.test";
 async function runAllTests() {
   generateTokenTestRunner();
   loginTestRunner();
-  // getInformationRunner();
+  getInformationRunner();
   // getListApproverRunner();
   // createTokenExtTestRunner();
 }
