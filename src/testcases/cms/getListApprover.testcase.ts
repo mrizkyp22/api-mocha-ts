@@ -11,7 +11,8 @@ const queryListPageAndSize = {
         exclude: null
     },
     testcase:"Get List all Approver with query page 1 and size 10",
-    message:"Success!"
+    message:"Success!",
+    sourceData: 'HC EBIS'
 }
 
 const getListApproverWithoutAuth = {
@@ -30,7 +31,8 @@ const queryListWithSQLInject = {
       exclude: "' OR '1'='1"
   },
     testcase:"Verify user cant get list approver when SQL Inject Inputted",
-    message:"Success!"
+    message:"Success!",
+    sourceData: 'HC EBIS'
   };
 
 export {

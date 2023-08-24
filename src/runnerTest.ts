@@ -8,7 +8,7 @@ async function runAllTests() {
   generateTokenTestRunner();
   loginTestRunner();
   getInformationRunner();
-  // getListApproverRunner();
+  getListApproverRunner();
   createTokenExtTestRunner();
 }
 

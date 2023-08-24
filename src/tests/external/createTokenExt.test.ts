@@ -8,8 +8,7 @@ import {
     pathEndpoint,
     createTokenExtDataValid,
     createTokenExtEmptyField,
-    createTokenExtSameData,
-    createTokenAddSpace
+    createTokenExtSameData
 } from '../../testcases/external/createTokenExt.testcase';
 
 export function createTokenExtTestRunner() {
