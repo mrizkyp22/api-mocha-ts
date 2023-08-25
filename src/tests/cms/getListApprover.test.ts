@@ -4,15 +4,16 @@ import { endpoint,loginValid } from '../../testcases/cms/login.testcase';
 import { login } from '../../api/cms/login';
 import { getListApprover } from '../../api/cms/getListApprover';
 import {
+    pathEndpoint,
+    jsonStructAPI,
     queryListPageAndSize,
     getListApproverWithoutAuth,
-    queryListWithSQLInject
 } from '../../testcases/cms/getListApprover.testcase';
+import { schemaChecker } from '../../utils/schemaChecker';
 
 export function getListApproverRunner() {
-    describe('API Get Information Test Suite', () => {
+    describe(pathEndpoint, () => {
         let accessToken: any; // Declare a variable to store the access token
-        let params: Record<string, any>
 
         // Run before each test case in this suite
         before(async () => {
@@ -21,6 +22,19 @@ export function getListApproverRunner() {
         });
 
         describe('Positive Cases', () => {
+            context(jsonStructAPI.testcase,async() => {
+                let response:any;
+                before(async() => {
+                    response = await getListApprover(accessToken,
+                        {
+                            ...jsonStructAPI.payload
+                        });
+                });
+                it('should return json schema', () => {
+                    schemaChecker(jsonStructAPI.schema, response.data)
+                });
+            });
+
             context(queryListPageAndSize.testcase,() => {
                 let response:any;
                 before(async() => {
@@ -41,7 +55,7 @@ export function getListApproverRunner() {
                 it(`should return meta size. value is ${queryListPageAndSize.payload.size}`,() => {
                     expect(response.data.meta).to.have.property('size', queryListPageAndSize.payload.size);
                 });
-                it(`should return meta data Source. value is ${queryListPageAndSize.payload}`,() => {
+                it(`should return meta data Source. value is ${queryListPageAndSize.sourceData}`,() => {
                     expect(response.data.meta).to.have.property('sourceData', queryListPageAndSize.sourceData);
                 });
             });
@@ -64,18 +78,6 @@ export function getListApproverRunner() {
                     expect(response.data.meta).to.have.property('message', getListApproverWithoutAuth.errorDetails);
                 });
             });
-        //     it(queryListWithSQLInject.testcase, async () => {
-        //         const response = await getListApprover(accessToken,
-        //             {
-        //                 ...queryListWithSQLInject.payload
-        //             }
-        //         );
-
-        //         expect(response.data).to.have.property('code', 200);
-        //         expect(response.data).to.have.property('message', queryListWithSQLInject.message);
-        //         expect(response.data.meta).to.have.property('page', queryListWithSQLInject.payload.page);
-        //         expect(response.data.meta).to.have.property('size', queryListWithSQLInject.payload.size);
-        //     });
         });
     });
 }

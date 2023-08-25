@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { endpoint } from '../../testcases/cms/getListApprover.testcase';
+import { endpoints } from '../../testcases/cms/getListApprover.testcase';
 
 export async function getListApprover(
     accessToken: any | null = null,
@@ -8,7 +8,7 @@ export async function getListApprover(
 
   try {
     const response = await axios.get(
-     endpoint,
+     endpoints,
       {
         headers: {
           "Authorization": `Bearer ${accessToken}`,

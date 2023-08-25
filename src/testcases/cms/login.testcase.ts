@@ -1,18 +1,7 @@
-import {nullValues,booleanValues,HTMLValues}from '../../testcases/general.testcase';
-
-function generateRandomString(length: number): string {
-    const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
+import {nullValues,booleanValues,HTMLValues}from '../../utils/randomInput';
+import { generateRandomString } from '../../utils/randomInput';
   
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
-      result += alphanumericChars.charAt(randomIndex);
-    }
-  
-    return result;
-  }
-  
-  const randomString = generateRandomString(6);
+const randomString = generateRandomString(6);
 
 const pathEndpoint = '/users-management/v3/auth/login'
 const endpoint = `${process.env.BASE_URL}${pathEndpoint}`

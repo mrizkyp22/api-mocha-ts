@@ -1,18 +1,24 @@
+import { schema_approver_list_200_search_not_found } from "../../schema/cms/getListApprover.schema"
 const pathEndpoint =  '/apm/v1/approver'
-const endpoint = `${process.env.BASE_URL}${pathEndpoint}`
+const endpoints = `${process.env.BASE_URL}${pathEndpoint}`
+
+const jsonStructAPI = {
+    payload:{
+        page: 1,
+        size: 10,
+    },
+    testcase:"Verify the JSON structure on the API is appropriate ",
+    schema: schema_approver_list_200_search_not_found
+}
 
 const queryListPageAndSize = {
     payload:{
-        search: null,
-        page: 1,
+        page: 2,
         size: 10,
-        sortBy: null,
-        sort: null,
-        exclude: null
     },
     testcase:"Get List all Approver with query page 1 and size 10",
     message:"Success!",
-    sourceData: 'HC EBIS'
+    sourceData: "HC EBIS"
 }
 
 const getListApproverWithoutAuth = {
@@ -32,12 +38,13 @@ const queryListWithSQLInject = {
   },
     testcase:"Verify user cant get list approver when SQL Inject Inputted",
     message:"Success!",
-    sourceData: 'HC EBIS'
+    sourceData: "HC EBIS"
   };
 
 export {
-    endpoint,
+    endpoints,
     pathEndpoint,
+    jsonStructAPI,
     queryListPageAndSize,
     queryListWithSQLInject,
     getListApproverWithoutAuth

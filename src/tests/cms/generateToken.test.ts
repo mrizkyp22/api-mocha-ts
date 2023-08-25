@@ -1,9 +1,9 @@
 import 'mocha';
 import { expect, assert } from 'chai';
 import { generateToken } from '../../api/cms/generateToken';
-import Ajv from 'ajv';
 import { generateToken_schema } from '../../schema/cms/generateToken.schema';
 import { pathEndpoint, generateTokenData } from '../../testcases/cms/generateToken.testcase';
+import { schemaChecker } from '../../utils/schemaChecker';
 
 export function generateTokenTestRunner() {
   describe(pathEndpoint, () => {
@@ -25,11 +25,15 @@ export function generateTokenTestRunner() {
           assert.containsAllKeys(response.data.data, ['accessToken'], 'accessToken field missing');
         });
         it('should return the same JSON structure as the contract"', async () => {
-          const ajv = new Ajv();
-          const validate = ajv.compile(generateToken_schema);
+          // const ajv = new Ajv();
+          // const validate = ajv.compile(generateToken_schema);
 
-          const isValid = validate(response.data);
-          expect(isValid).to.be.true;
+          // const isValid = validate(response.data);
+          // expect(isValid).to.be.true;
+
+          schemaChecker(generateToken_schema,response.data)
+
+
         });
       });
     });

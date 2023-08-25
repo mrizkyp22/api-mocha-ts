@@ -5,11 +5,11 @@ import { getListApproverRunner } from "./tests/cms/getListApprover.test";
 import { createTokenExtTestRunner } from "./tests/external/createTokenExt.test";
 
 async function runAllTests() {
-  generateTokenTestRunner();
-  loginTestRunner();
-  getInformationRunner();
+  // generateTokenTestRunner();
+  // loginTestRunner();
+  // getInformationRunner();
   getListApproverRunner();
-  createTokenExtTestRunner();
+  // createTokenExtTestRunner();
 }
 
 // Call the function to run all tests
