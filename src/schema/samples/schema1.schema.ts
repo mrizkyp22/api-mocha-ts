@@ -32,6 +32,5 @@ export const generateToken_schema = {
         }
       }
     },
-    "required": ["success", "code", "message", "details"]
+    "required": ["success", "code", "message", "data", "details"]
   }
-  

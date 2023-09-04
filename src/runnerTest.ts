@@ -1,15 +1,11 @@
-import { loginTestRunner } from "./tests/cms/login.test";
-import { generateTokenTestRunner } from "./tests/cms/generateToken.test";
-import { getInformationRunner } from "./tests/cms/getInformation.test";
-import { getListApproverRunner } from "./tests/cms/getListApprover.test";
-import { createTokenExtTestRunner } from "./tests/external/createTokenExt.test";
+import { testRunner } from "./tests/sampels/run.test";
+import { testRunner2 } from "./tests/sampels/run2.test";
+import {testRunner3 } from "./tests/sampels/run3.test";
 
 async function runAllTests() {
-  // generateTokenTestRunner();
-  // loginTestRunner();
-  // getInformationRunner();
-  getListApproverRunner();
-  // createTokenExtTestRunner();
+  testRunner();
+  testRunner2();
+  testRunner3();
 }
 
 // Call the function to run all tests
