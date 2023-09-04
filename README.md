@@ -21,11 +21,11 @@ Before using this tool, make sure you have the following in place:
 
 ## Explanation of the structure:
 
-1. `src/api`: This directory is used to configure request endpoints.
-2. `src/schema`: This directory is used to store JSON data schemas.
-3. `src/testcase`: This directory is used to create test cases.
-4. `src/test`: This directory is used to configure assertions.
-5. `src/runnerTest.ts`: This file is used to collect all test suite 
+1. `src/schema`: This directory is used to store JSON data schemas.
+2. `src/testcase`: This directory is used to create test cases.
+3. `src/test`: This directory is used to configure assertions.
+4. `src/runnerTest.ts`: This file is used to collect all test suite 
+5. `src/utils`: This file is used to provide functions for configuring the API, setting assertion configurations, defining the base URL, and other related tasks.
 
 ## Runner Test
 1. **Running Script**: To run the automated tests, follow these steps: 
