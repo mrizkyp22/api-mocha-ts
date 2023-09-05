@@ -1,8 +1,7 @@
 import { sendRequest, getRequest } from '../../utils/apiHelpers';
 import { codeAssertion,messageAssertion, fieldAssertion, valueFieldAssertion } from '../../utils/assertionHelpers';
-import { BASEURl } from '../../utils/config';
+import { BASEURl,saveToken,getToken } from '../../utils/config';
 import { loginValidData } from '../../testcases/cms/login.testcases';
-import { saveToken,getToken } from '../../utils/config';
 
 export function loginRunner() {
     describe(`PATH: ${loginValidData.path}`, () => {

@@ -1,8 +1,7 @@
-import { sendRequest, getRequest } from '../../utils/apiHelpers';
+import { getRequest } from '../../utils/apiHelpers';
 import { codeAssertion,messageAssertion, fieldAssertion, valueFieldAssertion } from '../../utils/assertionHelpers';
-import { BASEURl } from '../../utils/config';
+import { BASEURl,getToken } from '../../utils/config';
 import { listApproverPagination } from '../../testcases/cms/listApprover.testcase';
-import { getToken } from '../../utils/config';
 
 export function listApproverRunner() {
     describe(`PATH: ${listApproverPagination.path}`, () => {
