@@ -1,4 +1,4 @@
-import { sendRequest, getRequest } from '../../utils/apiHelpers';
+import { sendRequest } from '../../utils/apiHelpers';
 import { codeAssertion,messageAssertion, fieldAssertion, valueFieldAssertion } from '../../utils/assertionHelpers';
 import { BASEURl,saveToken,getToken } from '../../utils/config';
 import { loginValidData } from '../../testcases/cms/login.testcases';
