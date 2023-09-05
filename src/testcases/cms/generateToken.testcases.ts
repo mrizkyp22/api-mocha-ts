@@ -1,8 +1,9 @@
 import { generateToken_schema } from "../../schema/cms/generateToken.schema";
+import { endPoint } from "../../utils/config";
 
 export const generateTokenData = {
     testcase: "Verify system can generate a token for the authentication API before login",
-    path: '/users-management/v3/auth/generatetoken',
+    path: endPoint.generateToken,
     method: 'POST',
     payload: {
       clientId: process.env.CLIENT_ID,

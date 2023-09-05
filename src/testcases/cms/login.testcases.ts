@@ -1,9 +1,9 @@
-let path = '/users-management/v3/auth/login';
+import { endPoint } from "../../utils/config"
 
 export const loginValidData = {
     testcase: 'Verify user can login with valid data',
     method: 'POST',
-    path: path,
+    path: endPoint.login,
     payload: {
       username: process.env.USERNAME,
       password: process.env.PASSWORD

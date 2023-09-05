@@ -2,14 +2,14 @@ import { sendRequest, getRequest } from '../../utils/apiHelpers';
 import { codeAssertion,messageAssertion, fieldAssertion, valueFieldAssertion } from '../../utils/assertionHelpers';
 import { BASEURl } from '../../utils/config';
 import { listApproverPagination } from '../../testcases/cms/listApprover.testcase';
-import { accessToken } from './login.test';
-
+import { getToken } from '../../utils/config';
 
 export function listApproverRunner() {
     describe(`PATH: ${listApproverPagination.path}`, () => {
         let response: any;
 
         before(async () => {
+            const accessToken = getToken()
             const BASE_URL = BASEURl(listApproverPagination.path);
             response = await getRequest(BASE_URL, accessToken, listApproverPagination.payload);
         });

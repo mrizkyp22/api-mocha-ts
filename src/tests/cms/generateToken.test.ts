@@ -1,9 +1,7 @@
 import { sendRequest, getRequest } from '../../utils/apiHelpers';
 import { generateTokenData } from '../../testcases/cms/generateToken.testcases' ;
 import { codeAssertion,messageAssertion, fieldAssertion, schemaAssertion } from '../../utils/assertionHelpers';
-import { BASEURl } from '../../utils/config';
-
-export let tokenForLogin: any;
+import { BASEURl, saveToken } from '../../utils/config';
 
 export function generateTokenRunner() {
     describe(`PATH: ${generateTokenData.path}`, () => {
@@ -12,7 +10,8 @@ export function generateTokenRunner() {
         before(async () => {
             const BASE_URL = BASEURl(generateTokenData.path);
             response = await sendRequest(BASE_URL, generateTokenData.payload);
-            tokenForLogin = response.data.data.accessToken;
+            const tokenForLogin = response.data.data.accessToken;
+            saveToken(tokenForLogin)
         });
 
         context(generateTokenData.testcase, () => {

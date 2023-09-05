@@ -1,6 +1,8 @@
+import { endPoint } from "../../utils/config"
+
 export const listApproverPagination = {
     testcase:"Verify user can get list approver with based on pagination",
-    path: '/apm/v1/approver',
+    path: endPoint.approverList,
     method: 'GET',
     payload:{
         page: 2,
