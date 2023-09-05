@@ -1,11 +1,12 @@
-import { testRunner } from "./tests/sampels/run.test";
-import { testRunner2 } from "./tests/sampels/run2.test";
-import {testRunner3 } from "./tests/sampels/run3.test";
+import { generateTokenRunner } from "./tests/cms/generateToken.test";
+import { loginRunner } from "./tests/cms/login.test";
+import { listApproverRunner } from "./tests/cms/listApprover.test";
 
 async function runAllTests() {
-  testRunner();
-  testRunner2();
-  testRunner3();
+
+  generateTokenRunner();
+  loginRunner();
+  listApproverRunner();
 }
 
 // Call the function to run all tests
