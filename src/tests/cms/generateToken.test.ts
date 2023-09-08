@@ -1,20 +1,21 @@
 import { sendRequest } from '../../utils/apiHelpers';
-import { generateTokenData } from '../../testcases/cms/generateToken.testcases' ;
-import { codeAssertion,messageAssertion, fieldAssertion, schemaAssertion } from '../../utils/assertionHelpers';
-import { BASEURl, saveToken } from '../../utils/config';
+import { generateTokenData } from '../../testcases/cms/generateToken.testcases';
+import { codeAssertion, messageAssertion, fieldAssertion, schemaAssertion } from '../../utils/assertionHelpers';
+import { BASEURl, saveToken, endPoint } from '../../utils/config';
 
 export function generateTokenRunner() {
-    describe(`PATH: ${generateTokenData.path}`, () => {
-        let response: any;
-
-        before(async () => {
-            const BASE_URL = BASEURl(generateTokenData.path);
-            response = await sendRequest(BASE_URL, generateTokenData.payload);
-            const tokenForLogin = response.data.data.accessToken;
-            saveToken(tokenForLogin)
-        });
+    describe(`PATH: ${endPoint.generateToken}`, () => {
 
         context(generateTokenData.testcase, () => {
+            let response: any;
+
+            before(async () => {
+                const BASE_URL = BASEURl(endPoint.generateToken);
+                response = await sendRequest(BASE_URL, generateTokenData.payload);
+                const tokenForLogin = response.data.data.accessToken;
+                saveToken(tokenForLogin)
+            });
+
             it('should return valid schema', () => {
                 schemaAssertion(response.data, generateTokenData.schema);
             });
