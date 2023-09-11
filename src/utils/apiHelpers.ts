@@ -2,17 +2,24 @@ import axios from 'axios';
 
 export async function sendRequest(
   endpoint: any,
+  accessToken: any | null = null,
   payload: any | null = null,
-  accessToken: any | null = null) {
+) {
   try {
+    let params;
+    if (payload?.params) {
+      params = payload.params;
+    }
+    
     const response = await axios.post(
       endpoint,
-      payload,
+      payload.body,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
+        params: params,
       }
     );
 
@@ -25,9 +32,8 @@ export async function sendRequest(
 export async function getRequest(
   endpoint: any,
   accessToken: any | null = null,
-  params: any | null = null
+  payload: any | null = null
 ) {
-
   try {
     const response = await axios.get(
       endpoint,
@@ -36,7 +42,7 @@ export async function getRequest(
           "Authorization": `Bearer ${accessToken}`,
           "Content-Type": "application/json"
         },
-        params: params
+        params: payload.params
       }
     );
 

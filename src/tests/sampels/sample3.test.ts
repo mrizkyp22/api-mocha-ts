@@ -1,12 +1,20 @@
-import { endPoint } from '../../utils/config';
-import { listApproverPagination } from '../../testcases/cms/listApprover.testcase';
-import { TestHelpers } from '../../utils/testhelper';
 import { expect } from 'chai';
+import { TestHelpers } from '../../utils/testhelper';
 
-export function listRunnerTest() {
-  const endPoints = endPoint.approverList
+//change your testcases here
+import { LoginTestCase } from '../../testcases/sample/sample2.testcase';
 
-  describe(`PATH: ${endPoints}`, () => {
-    TestHelpers.get(endPoints, listApproverPagination)
-  });
+// Make your test runner here
+export function loginRunnerTest() {
+  const url = LoginTestCase.path // change your endpoint here
+
+  // Make your test suite here
+  describe(`PATH: ${url}`, () => {
+    // add your test here
+    TestHelpers.post(url, LoginTestCase.validData)
+    // add your test here
+    TestHelpers.post(url, LoginTestCase.invalidData)
+
+    // add your another test here
+  })
 }
